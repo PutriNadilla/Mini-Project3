@@ -83,6 +83,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                     }
                     else{
                         echo "<li><a href='#'>".$_SESSION["username"]."</a></li>";
+                        echo "<li><a href='index.php'>Main Content</a></li>";
                         echo "<li><a href='keranjang.php'>Keranjang</a></li>";
                         echo "<li><a href='historyuser.php'>History User</a></li>";
                         echo "<li><a href='logout.php'>Logout</a></li>";

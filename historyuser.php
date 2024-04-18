@@ -2,50 +2,60 @@
 session_start();
 require "./aksi/koneksi.php";
 
-if($_SESSION['username'] == "admin"){
-    $username = $_SESSION['username'];
-    if(isset($_GET['keyword'])){
-        $keyword = $_GET['keyword'];
-        $result = mysqli_query($conn, "SELECT * from pembayaran pbr
-        join user usr on pbr.id_user = usr.id_user
-        join game gm on pbr.id_game = gm.id_game
-        where usr.username LIKE '%$keyword%'");
+// Fungsi untuk mendapatkan riwayat pembayaran
+function getPaymentHistory($conn, $username, $keyword = null) {
+    if($username == "admin"){
+        if(isset($keyword)){
+            $query = "SELECT * FROM pembayaran pbr
+                JOIN user usr ON pbr.id_user = usr.id_user
+                JOIN game gm ON pbr.id_game = gm.id_game
+                WHERE usr.username LIKE '%$keyword%'";
+        } else {
+            $query = "SELECT * FROM pembayaran pbr
+                JOIN user usr ON pbr.id_user = usr.id_user
+                JOIN game gm ON pbr.id_game = gm.id_game
+                ORDER BY pbr.id_game";
+        }
     } else {
-        $result = mysqli_query($conn, "SELECT * from pembayaran pbr
-        join user usr on pbr.id_user = usr.id_user
-        join game gm on pbr.id_game = gm.id_game
-        order by pbr.id_game
-         ");
+        if(isset($keyword)){
+            $query = "SELECT * FROM pembayaran pbr
+                JOIN user usr ON pbr.id_user = usr.id_user
+                JOIN game gm ON pbr.id_game = gm.id_game
+                WHERE gm.nama_game LIKE '%$keyword%' AND usr.username = '$username'";
+        } else {
+            $query = "SELECT * FROM pembayaran pbr
+                JOIN user usr ON pbr.id_user = usr.id_user
+                JOIN game gm ON pbr.id_game = gm.id_game
+                WHERE usr.username = '$username'";
+        }
     }
+
+    $result = mysqli_query($conn, $query);
+    $history = [];
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        $history[] = $row;
+    }
+
+    return $history;
 }
-else if(isset($_SESSION['login'])){
-    $username = $_SESSION['username'];
-    if(isset($_GET['keyword'])){
-        $keyword = $_GET['keyword'];
-        $result = mysqli_query($conn, "SELECT * from pembayaran pbr
-        join user usr on pbr.id_user = usr.id_user
-        join game gm on pbr.id_game = gm.id_game
-        where gm.nama_game LIKE '%$keyword%' and usr.username = '$username'");
+
+$username = isset($_SESSION['username']) ? $_SESSION['username'] : null;
+$history = [];
+
+// Memeriksa jika pengguna masuk atau sebagai admin
+if(isset($_SESSION['login'])){
+    if($_SESSION['username'] == "admin"){
+        $username = $_SESSION['username'];
+        $history = getPaymentHistory($conn, $username, isset($_GET['keyword']) ? $_GET['keyword'] : null);
     } else {
-        $result = mysqli_query($conn, "SELECT * from pembayaran pbr
-        join user usr on pbr.id_user = usr.id_user
-        join game gm on pbr.id_game = gm.id_game
-        where usr.username = '$username'
-         ");
+        $username = $_SESSION['username'];
+        $history = getPaymentHistory($conn, $username, isset($_GET['keyword']) ? $_GET['keyword'] : null);
     }
-}
-else{
+} else {
     header('Location: login.php');
     exit;
 }
-
-
-$history = [];
-
-while ($row = mysqli_fetch_assoc($result)) {
-    $history[] = $row;
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,22 +76,31 @@ while ($row = mysqli_fetch_assoc($result)) {
                     <div class="lastname">Store</div>
                 </div>
             </a>
-            <ul class="navigation">
-                <?php 
-                    if(isset($notlogin)){
-                        echo "<li><a href='regis.php'>Regis</a></li>";
-                        echo "<li><a href='login.php'>Login</a></li>";
-                    }
-                    else{
-                        echo "<li><a href='#'>".$_SESSION["username"]."</a></li>";
-                        echo "<li><a href='keranjang.php'>Keranjang</a></li>";
-                        echo "<li><a href='historyuser.php'>History User</a></li>";
-                        echo "<li><a href='logout.php'>Logout</a></li>";
-                    }
-                ?>
-            </ul>
+            <?php if(isset($_SESSION['login'])) : ?>
+                <?php if($_SESSION['username'] == "admin") : ?>
+                    <ul class="navigation">
+                        <li><a href="formadmin.php">Menu</a></li>
+                        <li><a href="historyuser.php">History User</a></li>
+                        <li><a href="logout.php">Logout</a></li>
+                    </ul>
+                <?php else: ?>
+                    <ul class="navigation">
+                        <li><a href="#"><?php echo $_SESSION["username"]; ?></a></li>
+                        <li><a href="index.php">Main Content</a></li>
+                        <li><a href="keranjang.php">Keranjang</a></li>
+                        <li><a href="historyuser.php">History User</a></li>
+                        <li><a href="logout.php">Logout</a></li>
+                    </ul>
+                <?php endif; ?>
+            <?php else : ?>
+                <ul class="navigation">
+                    <li><a href="regis.php">Regis</a></li>
+                    <li><a href="login.php">Login</a></li>
+                </ul>
+            <?php endif; ?>
         </nav>
     </div>
+
     <h1>Riwayat Pemesanan</h1>
     <form action="" method="get">
         <input type="text" name="keyword" id="">
@@ -97,8 +116,9 @@ while ($row = mysqli_fetch_assoc($result)) {
             <th>Game ID</th>
             <th>Tanggal Pembayaran</th>
             <th>Email</th>
+            <th>Aksi</th>
         </tr>
-            <?php $i = 1;
+        <?php $i = 1;
         foreach ($history as $htr) : ?>
             <tr>
                 <td><?= $i; ?> </td>
@@ -110,9 +130,17 @@ while ($row = mysqli_fetch_assoc($result)) {
                 <td><?= $htr["gameid"] ?></td>
                 <td><?= $htr["tanggal_bayar"] ?></td>
                 <td><?= $htr["email"] ?> </td>
+                <td>
+                    <div class="print-button-container">
+                        <a href="cetakinvoice.php?id=<?= $htr['id_pembayaran'] ?>" class="print-button">
+                            <span>Cetak Invoice</span>
+                        </a>
+                    </div>
+                </td>
             </tr>
             <?php $i++;
         endforeach; ?>
     </table>
+
 </body>
 </html>

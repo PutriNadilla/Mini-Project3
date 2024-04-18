@@ -39,6 +39,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                 <div class="lastname">Store</div>
             </div>
             <ul class="navigation">
+                <li><a href="formadmin.php">Menu</a></li>
                 <li><a href="historyuser.php">Histoy User</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>

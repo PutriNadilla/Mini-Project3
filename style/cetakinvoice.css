@@ -1,0 +1,77 @@
+/* Container untuk invoice */
+.invoice-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Judul invoice */
+h2 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Detail invoice */
+.invoice-details{
+    margin-bottom: 20px;
+}
+
+/* Detail invoice dan game */
+.invoice-details p{
+    margin: 5px 0;
+    color: #333; 
+    font-size: 16px; 
+}
+
+
+/* Button Back */
+.back-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.back-button .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; 
+    text-decoration: none; 
+}
+
+.back-button .button:hover {
+    background-color: #0056b3;
+    color: #fff; 
+}
+
+.button-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.button-container .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; 
+    text-decoration: none; 
+}
+
+.button-container .button:hover {
+    background-color: #0056b3;
+    color: #fff; 
+}

@@ -2,7 +2,7 @@
 session_start();
 require "./aksi/koneksi.php";
 
-date_default_timezone_set("Asia/Samarinda");
+date_default_timezone_set("Asia/Makassar");
 $date = date('Y/m/d');
 
 if (isset($_GET["id"])) {
