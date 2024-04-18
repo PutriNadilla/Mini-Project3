@@ -66,8 +66,8 @@ while ($row = mysqli_fetch_assoc($result)) {
                 foreach ($valorant as $vlr) : ?>
                     <div id="<?= "element",$i ?>" class="custom-div">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqtPZVE7KSvhq8ToVTuF_XXEDK_0R7amC8rUs1GuOi_HnxTUW0qVWZ0binvvHINuL0rOQ&usqp=CAU" alt="">
-                        <h4><?= $vlr["produk"] ?> Coin</h4>
-                        <p>Rp. <?= $vlr["harga"] ?></p>
+                        <h4><?= $vlr["produk"] ?></h4>
+                        <p style="color: #999;">Rp. <?= $vlr["harga"] ?></p>
                         <?php
                         if (isset($notlogin)) { ?>
                             <a style="display: none;" href="../keranjang.php?id=<?=$vlr["id_game"];?>">Beli</a>

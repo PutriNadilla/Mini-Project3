@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 01 Mar 2024 pada 14.25
--- Versi server: 10.4.28-MariaDB
--- Versi PHP: 8.0.28
+-- Generation Time: Apr 18, 2024 at 08:03 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `game`
+-- Table structure for table `game`
 --
 
 CREATE TABLE `game` (
@@ -35,57 +35,57 @@ CREATE TABLE `game` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `game`
+-- Dumping data for table `game`
 --
 
 INSERT INTO `game` (`id_game`, `nama_game`, `produk`, `harga`) VALUES
-(14, 'valorant', '300', 26000),
-(15, 'valorant', '625', 52000),
-(16, 'valorant', '1075', 86000),
-(17, 'valorant', '2200', 172000),
-(18, 'valorant', '4700', 368000),
-(19, 'mobile legend', '172', 36000),
-(20, 'mobile legend', '514', 110000),
-(21, 'mobile legend', '1049', 220000),
-(22, 'mobile legend', '2194', 446000),
-(23, 'mobile legend', '3688', 742000),
-(24, 'pubg', '263', 50000),
-(26, 'pubg', '630', 115000),
-(27, 'pubg', '800', 150000),
-(28, 'pubg', '1000', 185000),
-(33, 'pubg', '1800', 397500),
-(36, 'apex', '1000', 159000),
-(37, 'apex', '2150', 310000),
-(38, 'apex', '4350', 581000),
-(39, 'apex', '6700', 891000),
-(40, 'apex', '11500', 1482000),
-(41, 'free fire', '5', 1000),
-(42, 'free fire', '12', 2000),
-(43, 'free fire', '50', 8000),
-(44, 'free fire', '70', 10000),
-(45, 'free fire', '140', 20000),
-(46, 'free fire', '355', 50000),
-(47, 'free fire', '720', 100000),
-(48, 'genshin', '60', 16500),
-(49, 'genshin', '300+30', 81000),
-(50, 'genshin', '980+110', 255000),
-(51, 'genshin', '1980+260', 489000),
-(52, 'genshin', '3280+600', 815000),
-(53, 'coc', '80+8', 16000),
-(54, 'coc', '500+50', 79000),
-(55, 'coc', '1200+120', 329000),
-(56, 'coc', '2500+250', 329000),
-(57, 'coc', '6500+650', 799000),
-(58, 'codm', '31', 5000),
-(59, 'codm', '62', 10000),
-(60, 'codm', '127', 20000),
-(61, 'codm', '320', 50000),
-(62, 'codm', '645', 100000);
+(14, 'valorant', '300 Point', 26000),
+(15, 'valorant', '625 Point', 52000),
+(16, 'valorant', '1075 Point', 86000),
+(17, 'valorant', '2200 Point', 172000),
+(18, 'valorant', '4700 Point', 368000),
+(19, 'mobile legend', '172 Diamond', 36000),
+(20, 'mobile legend', '514 Diamond', 110000),
+(21, 'mobile legend', '1049 Diamond', 220000),
+(22, 'mobile legend', '2194 Diamond', 446000),
+(23, 'mobile legend', '3688 Diamond', 742000),
+(24, 'pubg', '263 Uc', 50000),
+(26, 'pubg', '630 Uc', 115000),
+(27, 'pubg', '800 Uc', 150000),
+(28, 'pubg', '1000 Uc', 185000),
+(33, 'pubg', '1800 Uc', 397500),
+(36, 'apex', '1000 Coin', 159000),
+(37, 'apex', '2150 Coin', 310000),
+(38, 'apex', '4350 Coin', 581000),
+(39, 'apex', '6700 Coin', 891000),
+(40, 'apex', '11500 Coin', 1482000),
+(41, 'free fire ', '5 Diamond', 1000),
+(42, 'free fire', '12 Diamond', 2000),
+(43, 'free fire', '50 Diamond', 8000),
+(44, 'free fire', '70 Diamond', 10000),
+(45, 'free fire', '140 Diamond', 20000),
+(46, 'free fire', '355 Diamond', 50000),
+(47, 'free fire', '720 Diamond', 100000),
+(48, 'genshin', '60 Genesys', 16500),
+(49, 'genshin', '300+30 Genesys', 81000),
+(50, 'genshin', '980+110 Genesys', 255000),
+(51, 'genshin', '1980+260 Genesys', 489000),
+(52, 'genshin', '3280+600 Genesys', 815000),
+(53, 'coc', '80+8 Gems', 16000),
+(54, 'coc', '500+50 Gems', 79000),
+(55, 'coc', '1200+120 Gems', 329000),
+(56, 'coc', '2500+250 Gems', 329000),
+(57, 'coc', '6500+650 Gems', 799000),
+(58, 'codm', '31 Cp', 5000),
+(59, 'codm', '62 Cp', 10000),
+(60, 'codm', '127 Cp', 20000),
+(61, 'codm', '320 Cp', 50000),
+(62, 'codm', '645 Cp', 100000);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `keranjang`
+-- Table structure for table `keranjang`
 --
 
 CREATE TABLE `keranjang` (
@@ -97,16 +97,17 @@ CREATE TABLE `keranjang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `keranjang`
+-- Dumping data for table `keranjang`
 --
 
 INSERT INTO `keranjang` (`id_keranjang`, `id_user`, `id_game`, `gameid`, `jumlah`) VALUES
-(63, 26, 62, '', 1);
+(68, 26, 33, '', 1),
+(69, 26, 21, '', 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pembayaran`
+-- Table structure for table `pembayaran`
 --
 
 CREATE TABLE `pembayaran` (
@@ -120,16 +121,18 @@ CREATE TABLE `pembayaran` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `pembayaran`
+-- Dumping data for table `pembayaran`
 --
 
 INSERT INTO `pembayaran` (`id_pembayaran`, `id_user`, `id_game`, `gameid`, `jumlah`, `total`, `tanggal_bayar`) VALUES
-(234, 26, 36, '17324', 4, 636000, '2024-04-03');
+(234, 26, 36, '17324', 4, 636000, '2024-04-03'),
+(236, 27, 61, '70733', 1, 50000, '2024-04-18'),
+(237, 26, 49, '12333', 2, 162000, '2024-04-18');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -140,24 +143,25 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `email`) VALUES
-(26, 'putri', '$2y$10$CCuFqH92LXpki9IEp5GWq.U7bh2syyigjT9znigaDYrgJQPQHoZJq', 'putrinm@gmail.com');
+(26, 'putri', '$2y$10$CCuFqH92LXpki9IEp5GWq.U7bh2syyigjT9znigaDYrgJQPQHoZJq', 'putrinm@gmail.com'),
+(27, 'nadilla', '$2y$10$e6672pLSvMaEEE0fgNGdAOuEcW21VuLiGLe2jPPLxYYVxSqQR.5Bi', 'nadilla@gmail.com');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `game`
+-- Indexes for table `game`
 --
 ALTER TABLE `game`
   ADD PRIMARY KEY (`id_game`);
 
 --
--- Indeks untuk tabel `keranjang`
+-- Indexes for table `keranjang`
 --
 ALTER TABLE `keranjang`
   ADD PRIMARY KEY (`id_keranjang`),
@@ -165,7 +169,7 @@ ALTER TABLE `keranjang`
   ADD KEY `fk_id_game_kj` (`id_game`);
 
 --
--- Indeks untuk tabel `pembayaran`
+-- Indexes for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
   ADD PRIMARY KEY (`id_pembayaran`),
@@ -173,52 +177,52 @@ ALTER TABLE `pembayaran`
   ADD KEY `fk_id_game` (`id_game`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `game`
+-- AUTO_INCREMENT for table `game`
 --
 ALTER TABLE `game`
   MODIFY `id_game` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
--- AUTO_INCREMENT untuk tabel `keranjang`
+-- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id_keranjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id_keranjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
--- AUTO_INCREMENT untuk tabel `pembayaran`
+-- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=232;
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=238;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `keranjang`
+-- Constraints for table `keranjang`
 --
 ALTER TABLE `keranjang`
   ADD CONSTRAINT `fk_id_game_kj` FOREIGN KEY (`id_game`) REFERENCES `game` (`id_game`),
   ADD CONSTRAINT `fk_id_user_kj` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 
 --
--- Ketidakleluasaan untuk tabel `pembayaran`
+-- Constraints for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
   ADD CONSTRAINT `fk_id_game` FOREIGN KEY (`id_game`) REFERENCES `game` (`id_game`),

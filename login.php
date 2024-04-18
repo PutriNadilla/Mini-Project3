@@ -15,6 +15,10 @@ if (isset($_POST['login'])) {
             $_SESSION['login'] = true;
             $_SESSION['id'] = $row['id_user'];
             $_SESSION['username'] = $row['username'];
+
+            // Set cookie for username for 30 days
+            setcookie('username', $username, time() + (86400 * 30), "/");
+
             header('Location: index.php');
             exit;
         }
@@ -23,6 +27,10 @@ if (isset($_POST['login'])) {
     else if($username == "admin" && $password == "admin"){
         $_SESSION["login"] = true;
         $_SESSION["username"] = $username;
+
+        // Set cookie for username for 30 days
+        setcookie('username', $username, time() + (86400 * 30), "/");
+
         header("Location: formadmin.php");
         exit;
     }
@@ -43,34 +51,32 @@ if (isset($_POST['login'])) {
 
 <body>
     <div class="container">
-    <div class="login">
-    <form action="" method="post">
-        <h1>Login</h1>
-        <hr>
-        <?php
-        if (isset($error)) {
-            echo "<p style='color: red;'> Username/Password Salah! </p>";
-        } else {
-            echo "<p style='color: red; display:none;'> Username/Password Salah! </p> <p>Top-game terpercaya</p>";
-        }
-        ?>
-        <label for="">Username : </label>
-        <input type="text" name="username" id="" required> 
-        <label for="">Password : </label>
-        <input type="password" name="password" id="" required> 
-        <button type="submit" name="login">Login</button>
-        <P> 
-            <p1>Don't have an account?</p1>
-            <a href="regis.php">Sign-Up</a>
-        </P>
-    </form>
-    </div>
-    <div class="right">
-        <p>Play Point Store</p>
-        <img src="img/gambar login.jpeg" alt="Top-up Game">
-       
-
-    </div>
+        <div class="login">
+            <form action="" method="post">
+                <h1>Login</h1>
+                <hr>
+                <?php
+                if (isset($error)) {
+                    echo "<p style='color: red;'> Username/Password Salah! </p>";
+                } else {
+                    echo "<p style='color: red; display:none;'> Username/Password Salah! </p> <p>Top-game terpercaya</p>";
+                }
+                ?>
+                <label for="">Username : </label>
+                <input type="text" name="username" id="" required> 
+                <label for="">Password : </label>
+                <input type="password" name="password" id="" required> 
+                <button type="submit" name="login">Login</button>
+                <P> 
+                    <p1>Don't have an account?</p1>
+                    <a href="regis.php">Sign-Up</a>
+                </P>
+            </form>
+        </div>
+        <div class="right">
+            <p>Play Point Store</p>
+            <img src="img/gambar login.jpeg" alt="Top-up Game">
+        </div>
     </div>
 </body>
 
